@@ -4,19 +4,19 @@
 
 int main ( int argc, char** argv )
 {
-    int nombreMystere = 0, nombreEntre = 0, coups = 0, rejouer = 0, difficulte = 2;
+    int mysteriousnumber = 0, eingegebenenummer = 0, schlag = 0, nochmalspielen = 0, schwierigkeit = 2;
     int max = 100;
     const int MIN = 1;
 
     srand(time(NULL));
 
-    // S�lection de la difficult�
+    // Sélection de la difficulté
 
-    printf("Choisissez un niveau de difficult� :\n");
-    printf("1 : entre 1 et 10\n2 : entre 1 et 100\n3 : entre 1 et 1000\n");
-    scanf("%d", &difficulte);
+    printf("Wählen Sie einen Schwierigkeitsgrad:\n");
+    printf("1 :  von 1 bis  10\n2 : von 1 bis 100\n3 : von 1 bis 1000\n");
+    scanf("%d", &schwierigkeit);
 
-    switch(difficulte)
+    switch(schwierigkeit)
     {
     case 1:
         max = 10;
@@ -28,36 +28,36 @@ int main ( int argc, char** argv )
         max = 1000;
         break;
     default:
-        printf("Niveau non reconnu. Je choisis pour vous le niveau 2 (entre 1 et 100).\n");
+        printf("Nicht anerkannt. Ich wähle für Sie Level 2 (zwischen 1 und 100).\n");
         max = 100;
     }
 
-    // D�but de la boucle qui permet de faire plusieurs parties
+    // Début de la boucle qui permet de faire plusieurs parties
     do
     {
         // Initialisations pour la partie
-        coups = 0;
-        nombreMystere = (rand() % (max - MIN + 1)) + MIN;
+        schlag = 0;
+        mysteriousnumber = (rand() % (max - MIN + 1)) + MIN;
 
         do
         {
-            printf("Quel est le nombre ? ");
-            scanf("%d", &nombreEntre);
-            coups++;
+            printf("Wie hoch ist die Zahl ? ");
+            scanf("%d", &eingegebenenummer);
+            schlag++;
 
-            if (nombreMystere > nombreEntre)
-                printf("C'est plus !\n\n");
-            else if (nombreMystere < nombreEntre)
-                printf("C'est moins !\n\n");
+            if (mysteriousnumber > eingegebenenummer)
+                printf("Es ist mehr !\n\n");
+            else if (mysteriousnumber < eingegebenenummer)
+                printf("Das ist weniger. !\n\n");
             else
-                printf ("Bravo, vous avez trouve le nombre mystere en %d coups !!!\n\n", coups);
+                printf ("Gut gemacht, Sie haben die Anzahl mystere in  d% Schläge gefunden!!!\n\n", schlag);
 
-        } while (nombreEntre != nombreMystere);
+        } while (eingegebenenummer != mysteriousnumber);
 
         // Fin de la partie, on demande si on veut rejouer
-        printf("Voulez-vous faire une autre partie (1 = oui, 0 = non) ? ");
-        scanf("%d", &rejouer);
+        printf("Möchten Sie ein anderes Spiel machen (1 = ja, 0 = nein) ? ");
+        scanf("%d", &nochmalspielen);
 
-    } while (rejouer);
+    } while (nochmalspielen);
 
 }
